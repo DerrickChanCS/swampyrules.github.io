@@ -1,0 +1,33 @@
+#container {
+	width: 90%;
+	margin: 0 auto;
+	margin-top: 60px;
+}
+
+#gender {
+	margin-right: 10px;
+	margin-top: 10px;
+}
+
+#male {
+	margin-right: 10px;
+	margin-top: 10px;
+}
+
+#female {
+	margin-right: 10px;
+	margin-top: 10px;
+}
+
+#none {
+	margin-right: 10px;
+	margin-top: 10px;
+}
+
+#create {
+	background-color: #00BFE3;
+}
+
+#create:hover{
+	background-color: #0099B6;
+}
