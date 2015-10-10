@@ -33,6 +33,7 @@ function codeLatLng(lat, lng){
 
 function getWeather(city){
 	console.log(city); 
+	$('#weather').attr("title", city); 
 }
  
 
