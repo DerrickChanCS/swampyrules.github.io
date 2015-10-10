@@ -4,8 +4,39 @@
   	<script src="scripts/jquery-1.11.3.min.js"></script>
   	<script src="bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
   	<link rel="stylesheet" href="bootstrap-3.3.5-dist/css/bootstrap.min.css">
+  	<link rel="stylesheet" href="css/style.css">
+  	<script src="login.js"></script>
   </head>
+	<style>
+		#grad1 {
+			height: 100px;
+			background: -webkit-linear-gradient(45deg, red, blue); /* For Safari 5.1 to 6.0 */
+			background: -o-linear-gradient(45deg, red, blue); /* For Opera 11.1 to 12.0 */
+			background: -moz-linear-gradient(45deg, red, blue); /* For Firefox 3.6 to 15 */
+			background: linear-gradient(45deg, red, blue); /* Standard syntax (must be last) */
+		}
+	</style>
   <body>
-  	<button type="button" class="btn">Basic Button</button>
+  	<div class="container" id="grad1"><!--contain well-->
+  	<br>
+		<div class="container">
+			<div class="col-md-3"></div>
+			<div class="well well-lg col-md-6">
+				<form role="form">
+					<div class="form-group">
+						<label for="user">Username:</label>
+						<input type="text" class="form-control" id="user"></input>
+					</div>
+					<div class="form-group">
+						<label for="pass">Password:</label>
+						<input type="password" class="form-control" id="pass"></input>
+					</div>
+					<div class="form-group">
+						<button type="button" class="col-md-4 btn btn-default">Login</button>
+					</div>
+				</form>
+			</div>
+		</div>
+  	</div>
   </body>
 </html>
