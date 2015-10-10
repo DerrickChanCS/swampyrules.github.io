@@ -5,6 +5,7 @@
   	<script src="bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
   	<link rel="stylesheet" href="bootstrap-3.3.5-dist/css/bootstrap.min.css">
   	<link rel="stylesheet" href="css/style.css">
+	<script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
   	<script src="login.js"></script>
   </head>
 	<style>
@@ -17,26 +18,25 @@
 		}
 	</style>
   <body>
-  	<div class="container" id="grad1"><!--contain well-->
   	<br>
-		<div class="container">
-			<div class="col-md-3"></div>
-			<div class="well well-lg col-md-6">
-				<form role="form">
-					<div class="form-group">
-						<label for="user">Username:</label>
-						<input type="text" class="form-control" id="user"></input>
-					</div>
-					<div class="form-group">
-						<label for="pass">Password:</label>
-						<input type="password" class="form-control" id="pass"></input>
-					</div>
-					<div class="form-group">
-						<button type="button" class="col-md-4 btn btn-default">Login</button>
-					</div>
-				</form>
+		<div class="container" style="position: relative; top: 50%;transform: translateY(+50%);">
+			<div class="row">
+				<span class="col-md-4"></span>
+				<div class="well well-lg col-md-4">
+					<form role="form">
+						<div class="form-group">
+							<label for="user">Username:</label>
+							<input type="text" class="form-control" id="username"></input>
+						</div>
+						<div class="form-group">
+							<label for="pass">Password:</label>
+							<input type="password" class="form-control" id="password"></input>
+						</div>
+					</form>
+					<span><p style="color:red" id="msg">Incorrect username password combination</p></span>
+					<button type = "button" id="submit" class = "btn btn-success" style="width:100%">Login</button>
+				</div>
 			</div>
 		</div>
-  	</div>
   </body>
 </html>
