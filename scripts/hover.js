@@ -1,0 +1,16 @@
+$(document).ready(function(){
+	$('#settingsText').hide()
+	$('[data-toggle="tooltip"]').tooltip(); 
+	$('#settingsSpan').hover(function(){
+		console.log("on");
+		$('#settingsText').show();
+		$('#settings').hide();
+		//$('#settingsText').fadeIn(300);
+		//$('#settings').fadeOut(300);
+	},
+	function(){
+		console.log("off");
+		$('#settingsText').fadeOut(300);
+		$('#settings').fadeIn(300);
+	});
+});
