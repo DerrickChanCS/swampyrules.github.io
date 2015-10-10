@@ -4,8 +4,39 @@
   	<script src="scripts/jquery-1.11.3.min.js"></script>
   	<script src="bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
   	<link rel="stylesheet" href="bootstrap-3.3.5-dist/css/bootstrap.min.css">
+  	<link rel="stylesheet" href="css/style.css">
+	<script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
+  	<script src="login.js"></script>
   </head>
+	<style>
+		#grad1 {
+			height: 100px;
+			background: -webkit-linear-gradient(45deg, red, blue); /* For Safari 5.1 to 6.0 */
+			background: -o-linear-gradient(45deg, red, blue); /* For Opera 11.1 to 12.0 */
+			background: -moz-linear-gradient(45deg, red, blue); /* For Firefox 3.6 to 15 */
+			background: linear-gradient(45deg, red, blue); /* Standard syntax (must be last) */
+		}
+	</style>
   <body>
-  	<button type="button" class="btn">Basic Button</button>
+  	<br>
+		<div class="container" style="position: relative; top: 50%;transform: translateY(+50%);">
+			<div class="row">
+				<span class="col-md-4"></span>
+				<div class="well well-lg col-md-4">
+					<form role="form">
+						<div class="form-group">
+							<label for="user">Username:</label>
+							<input type="text" class="form-control" id="username"></input>
+						</div>
+						<div class="form-group">
+							<label for="pass">Password:</label>
+							<input type="password" class="form-control" id="password"></input>
+						</div>
+					</form>
+					<span><p style="color:red" id="msg">Incorrect username password combination</p></span>
+					<button type = "button" id="submit" class = "btn btn-success" style="width:100%">Login</button>
+				</div>
+			</div>
+		</div>
   </body>
 </html>
