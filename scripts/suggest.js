@@ -62,14 +62,14 @@ $(document).ready(function(){
 				 
 				var temp_cond = ""; 
 				if(temp < 40){
-					temp_cond = "freezing"; 
+					temp_cond = "Freezing"; 
 				}
 				else if(temp >= 40 && temp < 55){
-					temp_cond = "cold"; 
+					temp_cond = "Cold"; 
 				}
 
 				else if(temp >= 55 && temp < 65){
-					temp_cond = "Cold";
+					temp_cond = "Chilly";
 				}
 				else if(temp >= 65 && temp < 70){
 					temp_cond = "Normal"; 
@@ -175,7 +175,7 @@ $(document).ready(function(){
 			colors.push("Orange");
 			colors.push("Green"); 
 			colors.push("Brown"); 
-			colors.push("Grey"); 
+			colors.push("Gray"); 
 			colors.push("Black"); 
 			colors.push("White"); 
 		}
@@ -209,6 +209,220 @@ $(document).ready(function(){
 
 		console.log(colors); 
 
+		//var user = Parse.User.current(); 
+		var user = "lx6jPJFAaY"
+
+		var gender_pref; 
+		var User = Parse.Object.extend("User"); 
+		var query = new Parse.Query("User"); 
+		query.equalTo("objectId", user); 
+		query.find({
+			success: function(results) {
+				var object = results[0]; 
+				var m =object.get("male"); 
+				var f = object.get("female");
+				if(m && !f){
+					gender_pref = "male"; 
+				}
+				else if(f && !m){
+					gender_pref = "female"; 
+				}
+				else{
+					gender_pref = "nopref"; 
+				} 
+				allquery(gender_pref, colors, season); 
+			},
+			error: function(error){
+				alert("Error: " + error.code + ":" + error.message); 
+			}
+		});
+
+		function allquery(gender_pref, colors, season){
+			var mainq = new Parse.Query("Clothes"); 
+			if(gender_pref === "nopref"){
+				var num = Math.random(); 
+				if(num >= 0.5){
+					gender_pref = "male"; 
+				}
+				else{
+					gender_pref = "female"; 
+				}
+			}
+			mainq.equalTo(gender_pref, true);
+		
+
+		var weatherq = new Parse.Query("Clothes");
+			mainq.equalTo("condition", weather_cond); 
+
+		//var tempq = new Parse.Query("Clothes");
+			mainq.equalTo("weather", temp_cond);  
+
+		//var mainq = Parse.Query.or(genq, weatherq, tempq); 
+			console.log(gender_pref); 
+			console.log(weather_cond); 
+			console.log(temp_cond); 
+			mainq.find({
+				success: function(results){
+					var filtered = []; 
+					for( var i = 0; i < results.length; i++){
+						var temp = results[i].get("color");
+						for(var j = 0; j < colors.length; j++){
+							if(temp === colors[j]){
+								filtered.push(results[i]); 
+							}
+						} 
+
+					}
+
+					console.log(filtered); 
+
+					var casual = []; 
+					var semi = []; 
+					var formal = [];
+
+					for(var i = 0; i < filtered.length; i++){
+						var temp = filtered[i].get("occasion"); 
+						if(temp === "Casual"){
+							casual.push(filtered[i]); 
+						}
+						else if(temp === "Semi-Formal"){
+							semi.push(filtered[i]); 
+						}
+						else{
+							formal.push(filtered[i]); 
+						}
+					}
+
+					console.log(casual); 
+					console.log(semi); 
+					console.log(formal);
+					var finished_outfits_top = [];
+					var finished_outfits_bot = [];  
+					
+					if(casual.length >= 2){
+						var tops = []; 
+						var bots = [];  
+						for(var i = 0; i < casual.length; i++){
+							var temp = casual[i].get("clothType"); 
+							
+							if(temp === "Shirt"){
+								tops.push(casual[i]);  
+							}
+							if(temp === "Pants"){
+								bots.push(casual[i]);  
+							}
+						}
+
+						if(bots.length < 1 || tops.length < 1){
+
+						}
+
+						else{
+							for(var i = 0; i < bots.length; i++){
+								var color = bots[i].get("color"); 
+								var match_top_colors = getMatchColor(season, color);
+								for(var j = 0; j < tops.length; j++){
+									var color2 = tops[j].get("color");
+									for(var k = 0; k < match_top_colors.length; k++){
+										if(color2 === match_top_colors[k]){
+											finished_outfits_top.push(tops[j]); 
+											finished_outfits_bot.push(bots[i]); 
+										}
+									} 
+								}
+							}
+						}
+
+
+					}
+
+					if(semi.length >= 2){
+						var tops = []; 
+						var bots = [];  
+						for(var i = 0; i < casual.length; i++){
+							var temp = casual[i].get("clothType"); 
+							
+							if(clothType === "Shirt"){
+								tops.push(casual[i]);  
+							}
+							if(clothType === "Pants"){
+								bots.push(casual[i]);  
+							}
+						}
+
+						if(bots.length < 1 || tops.length < 1){
+
+						}
+
+						else{
+							for(var i = 0; i < bots.length; i++){
+								var color = bots[i].get("color"); 
+								var match_top_colors = getMatchColor(season, color);
+								for(var j = 0; j < tops.length; j++){
+									var color2 = tops[j].get("color");
+									for(var k = 0; k < match_top_colors.length; k++){
+										if(color2 === match_top_colors[k]){
+											finished_outfits_top.push(tops[j]); 
+											finished_outfits_bot.push(bots[i]); 
+										}
+									} 
+								}
+							}
+						}
+
+					}
+
+					if(formal.length >= 2){
+						var tops = []; 
+						var bots = [];  
+						for(var i = 0; i < casual.length; i++){
+							var temp = casual[i].get("clothType"); 
+							
+							if(clothType === "Shirt"){
+								tops.push(casual[i]);  
+							}
+							if(clothType === "Pants"){
+								bots.push(casual[i]);  
+							}
+						}
+
+						if(bots.length < 1 || tops.length < 1){
+
+						}
+
+						else{
+							for(var i = 0; i < bots.length; i++){
+								var color = bots[i].get("color"); 
+								var match_top_colors = getMatchColor(season, color);
+								for(var j = 0; j < tops.length; j++){
+									var color2 = tops[j].get("color");
+									for(var k = 0; k < match_top_colors.length; k++){
+										if(color2 === match_top_colors[k]){
+											finished_outfits_top.push(tops[j]); 
+											finished_outfits_bot.push(bots[i]); 
+										}
+									} 
+								}
+							}
+						}
+
+					} 
+
+					console.log(finished_outfits_bot); 
+					console.log(finished_outfits_top); 
+
+				}, 
+				error: function(error){
+					alert("Error: " + error.code + ":" + error.message); 
+				}
+
+				
+
+
+
+
+			});
+		} 
 
 	}
 
@@ -219,4 +433,174 @@ $(document).ready(function(){
 
 });
 
+function getMatchColor(season, color){
+	var ret_val = []; 
+	if(season === "fall")
+	{
+		if(color === "Red" || color === "Orange" || color === "Green"){
+			ret_val.push("Gray");
+			ret_val.push("Black");
+			ret_val.push("White");
+		}
+		
+		if(color === "Brown"){
+			ret_val.push("Red"); 
+			ret_val.push("Black");
+			ret_val.push("White"); 
+		}
 
+		if(color === "Gray"){
+			ret_val.push("Red"); 
+			ret_val.push("Black");
+			ret_val.push("White"); 
+			ret_val.push("Orange"); 
+			ret_val.push("Green");
+		}
+
+		if(color === "Black"){
+			ret_val.push("Red"); 
+			ret_val.push("Black");
+			ret_val.push("White"); 
+			ret_val.push("Orange"); 
+			ret_val.push("Green");
+			ret_val.push("Gray"); 
+			ret_val.push("Brown"); 
+		}
+
+		if(color === "White"){
+			ret_val.push("Red"); 
+			ret_val.push("Black");
+			ret_val.push("White"); 
+			ret_val.push("Orange"); 
+			ret_val.push("Green");
+			ret_val.push("Gray"); 
+			ret_val.push("Brown"); 
+		}
+
+	}
+
+	if(season === "winter"){
+		if(color === "Red"){
+			ret_val.push("Black"); 
+			ret_val.push("White"); 
+		}
+		if(color === "Blue"){
+			ret_val.push("Black"); 
+			ret_val.push("White"); 
+		}
+		if(color === "Purple"){
+			ret_val.push("Black"); 
+			ret_val.push("White"); 
+		}
+		if(color === "Yellow"){
+			ret_val.push("Black"); 
+			ret_val.push("White"); 
+		}
+		if(color === "Green"){
+			ret_val.push("Black"); 
+			ret_val.push("White"); 
+		}
+		if(color === "White"){
+			ret_val.push("Red"); 
+			ret_val.push("Blue");
+			ret_val.push("Purple");  
+			ret_val.push("Green");
+			ret_val.push("Black"); 
+			ret_val.push("White"); 
+		}
+		if(color === "Black"){
+			ret_val.push("Red"); 
+			ret_val.push("Blue");
+			ret_val.push("Purple"); 
+			ret_val.push("Yellow"); 
+			ret_val.push("Green");
+			ret_val.push("Black"); 
+			ret_val.push("White"); 
+		}
+	}
+
+	if(season === "spring"){
+		if(color === "Red"){
+			ret_val.push("Black"); 
+			ret_val.push("White"); 
+		}
+
+		if(color === "Pink"){
+			ret_val.push("Black"); 
+			ret_val.push("White"); 
+		}
+		if(color === "Purple"){
+			ret_val.push("Black"); 
+			ret_val.push("White"); 
+		}
+		if(color === "Yellow"){
+			ret_val.push("Black"); 
+			ret_val.push("White"); 
+		}
+		if(color === "Green"){
+			ret_val.push("Black"); 
+			ret_val.push("White"); 
+		}
+		if(color === "White"){
+			ret_val.push("Red"); 
+			ret_val.push("Pink");
+			ret_val.push("Purple"); 
+			ret_val.push("Yellow"); 
+			ret_val.push("Green");
+			ret_val.push("Black"); 
+			ret_val.push("White"); 
+		}
+		if(color === "Black"){
+			ret_val.push("Red"); 
+			ret_val.push("Pink");
+			ret_val.push("Purple"); 
+			ret_val.push("Yellow"); 
+			ret_val.push("Green");
+			ret_val.push("Black"); 
+			ret_val.push("White"); 
+		}
+	}
+	if(season === "summer"){
+		if(color === "Blue"){
+			ret_val.push("Pink");
+			ret_val.push("Purple"); 
+			ret_val.push("Black"); 
+			ret_val.push("White"); 
+		}
+		if(color === "Pink"){
+			ret_val.push("Black"); 
+			ret_val.push("White"); 
+		}
+		if(color === "Purple"){
+			ret_val.push("Black"); 
+			ret_val.push("White"); 
+		}
+		if(color === "Yellow"){
+			ret_val.push("Black"); 
+			ret_val.push("White"); 
+		}
+		if(color === "Green"){
+			ret_val.push("Black"); 
+			ret_val.push("White"); 
+		}
+		if(color === "White"){
+			ret_val.push("Blue"); 
+			ret_val.push("Pink");
+			ret_val.push("Purple"); 
+			ret_val.push("Yellow"); 
+			ret_val.push("Green");
+			ret_val.push("Black"); 
+			ret_val.push("White"); 
+		}
+		if(color === "Black"){
+			ret_val.push("Blue"); 
+			ret_val.push("Pink");
+			ret_val.push("Purple"); 
+			ret_val.push("Yellow"); 
+			ret_val.push("Green");
+			ret_val.push("Black"); 
+			ret_val.push("White"); 
+		}
+	}
+	return ret_val; 
+}
