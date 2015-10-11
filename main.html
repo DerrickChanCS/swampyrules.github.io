@@ -1,5 +1,6 @@
 <html>
 	<head>
+		<title>Zori</title>
   		<script src="scripts/jquery-1.11.3.min.js"></script>
   		<script src="bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
   		<script src="https://maps.googleapis.com/maps/api/js"></script>
@@ -8,14 +9,17 @@
   		<link rel="stylesheet" type="text/css" href="slick-1.5.7/slick/slick.css">
   		<link rel="stylesheet" type="text/css" href="slick-1.5.7/slick/slick-theme.css">
   		<link rel="stylesheet" href="css/main.css">
-  		
+  		<link rel="stylesheet" href="css/weather-icons-wind.min.css">
+  		<link rel="stylesheet" href="css/weather-icons.min.css">
+  		<script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>	
   		<script src="slick-1.5.7/slick/slick.min.js"></script>
+  		<script src="scripts/jquery.simpleWeather.min.js"></script>
 
-  		<script src="processing.js"></script>
+  		<script src="scripts/suggest.js"></script>
   		<script src="scripts/hover.js"></script>  		
 	</head>
 	<body>
-		<nav class="navbar navbar-default">
+		<nav class="navbar navbar-default hoverOpacity">
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<a class="navbar-brand"><span class="glyphicon glyphicon-home"></span> Zori</a>
@@ -24,35 +28,37 @@
 					<ul class="nav navbar-nav ">
 						<li><span class="glyphicon glyphicon-book navbar-text" id="closet" data-toggle="tooltip" data-placement="bottom" title="Your Closet"></span></li>
 						<!--<li><span class="glyphicon glyphicon-book navbar-text"> Your Closet</span></li-->
-						<li><span class="glyphicon glyphicon-plus navbar-text" id="weather" data-toggle="tooltip" data-placement="bottom" ></span><li>
-  						<script src="scripts/suggest.js"></script>
+						<li><span class="glyphicon glyphicon-flag navbar-text" id="location" data-toggle="tooltip" data-placement="bottom" ></span><li>
+						<li><p class="navbar-text" style="font-size:18px"><i id="weather" data-toggle="tooltip" data-Placement="bottom"></i></p></li>
+						<li><span id="settings" class="navbar-text glyphicon glyphicon-cog" style="font-size:18px"></span></li>
 					</ul>
 				</div>
 				<div>
 					<ul class="nav navbar-nav navbar-right">
-						<li><span id="settings" class="navbar-text glyphicon glyphicon-cog"></span></li>
+					<li><a class="">Logout</a></li>
 					</ul>
 				</div><!--right nav bar-->
 			</div><!--container fluid-->
 		</nav>
 		<div style="height:25%">
+			<p align="center">Choose your outfit</p>
 		</div><!--top div-->
 		<div style="height:50%">
 			<div class="carousel" id="carouselTop">
-				<div style="text-align:center"><img class="resize" id="img1" src="1.jpg"></img></div>
-				<div style="text-align:center"><img class="resize" id="img2" src="2.jpg"></img></div>
-				<div style="text-align:center"><img class="resize" id="img3" src="3.jpg"></img></div>
-				<div style="text-align:center"><img class="resize" id="img4" src="1.jpg"></img></div>
-				<div style="text-align:center"><img class="resize" id="img5" src="2.jpg"></img></div>
-				<div style="text-align:center"><img class="resize" id="img6" src="3.jpg"></img></div>
+				<div style="text-align:center"><img class="resize" id="img0" src="1.jpg"></img></div>
+				<div style="text-align:center"><img class="resize" id="img1" src="ha"></img></div>
+				<div style="text-align:center"><img class="resize" id="img2" src="ha" ></img></div>
+				<div style="text-align:center"><img class="resize" id="img3" src="ha"></img></div>
+				<div style="text-align:center"><img class="resize" id="img4" src="ha"></img></div>
+				<div style="text-align:center"><img class="resize" id="img5" src="ha"></img></div>
 			</div><!--top carousel-->
 			<div class="carousel" id="carouselBot">
-				<div style="text-align:center"><img class="resize" id="img7" src="1.jpg"></img></div>
-				<div style="text-align:center"><img class="resize" id="img8" src="2.jpg"></img></div>
-				<div style="text-align:center"><img class="resize" id="img9" src="3.jpg"></img></div>
-				<div style="text-align:center"><img class="resize" id="img10" src="1.jpg"></img></div>
-				<div style="text-align:center"><img class="resize" id="img11" src="2.jpg"></img></div>
-				<div style="text-align:center"><img class="resize" id="img12" src="3.jpg"></img></div>
+				<div style="text-align:center"><img class="resize" id="bot0" src="ha"></img></div>
+				<div style="text-align:center"><img class="resize" id="bot1" src="ha"></img></div>
+				<div style="text-align:center"><img class="resize" id="bot2" src="ha"></img></div>
+				<div style="text-align:center"><img class="resize" id="bot3" src="ha"></img></div>
+				<div style="text-align:center"><img class="resize" id="bot4" src="ha"></img></div>
+				<div style="text-align:center"><img class="resize" id="bot5" src="ha"></img></div>
 			</div><!--bot carousel-->
 		</div><!--middle div-->
 		<div style="height:25%">
