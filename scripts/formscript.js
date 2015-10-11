@@ -26,11 +26,15 @@ $(document).ready(function() {
 
 	user.signUp(null, {
   		success: function(user) {
+  			alert("Account created succesfully! Redirecting to login.");
+  			window.location.href = "index.html";
+  			console.log("success");
     		// Hooray! Let them use the app now.
   	},
   	error: function(user, error) {
     		// Show the error message somewhere and let the user try again.
     	alert("Error: " + error.code + " " + error.message);
+    	console.log("fail");
   		}
 	});
 }
