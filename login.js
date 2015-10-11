@@ -11,8 +11,7 @@ $(document).ready(function(){
 		Parse.User.logIn(username, password, {
 			success: function(user) {
 				// Success do something
-				console.log(username);
-				console.log(password);
+				window.location.href = "main.html";
 			},
 			error: function(user, error) {
 				// failed throw error
