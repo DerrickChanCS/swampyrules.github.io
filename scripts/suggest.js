@@ -403,17 +403,38 @@ $(document).ready(function(){
 											finished_outfits_top.push(tops[j]); 
 											finished_outfits_bot.push(bots[i]); 
 										}
-									} 
+									}
 								}
 							}
 						}
 
-					} 
+					}
+					for(var i = 0; i < finished_outfits_top.length; i++){
+						var top = document.getElementById("img"+i);
+						var bot = document.getElementById("bot"+i);
+						var clone = new Parse.Object.extend('Clothes');
+						var botclone = new Parse.Object.extend('Clothes');
+						clone = finished_outfits_top[i];
+						botclone = finished_outfits_bot[i];
+						var topImage = clone.get("image");
+						var botImage = botclone.get("image");
+
+
+						top.src= topImage.url();
+						bot.src= botImage.url();
+
+						//
+						//This is used to store outfits sets the Outfit pointer to a user, then sets outfit pointers to tops and bottoms
+						var Outfits = new Parse.Object.extend("Outfits");
+						Outfits.set("username", Parse.User.current());
+						Outfits.set("top", clone);
+						Outfits.set("bottom", botclone);
+					}
 
 					console.log(finished_outfits_bot); 
 					console.log(finished_outfits_top); 
 
-				}, 
+				},
 				error: function(error){
 					alert("Error: " + error.code + ":" + error.message); 
 				}

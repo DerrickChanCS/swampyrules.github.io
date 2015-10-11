@@ -11,31 +11,20 @@
   	<script> document.title = 'ZORI'; </script>
   </head>
   <body>
+
   	<script>
-  		Parse.initialize("EAhGRHsW3bd43JhRN4rj27BOdjp2Afx7UiGa2CEo", "bcdx4nwYJgY4fYgvq8n2rTpbkjSGP3KR1vSGLd6q");
-  window.fbAsyncInit = function() {
+		Parse.initialize("EAhGRHsW3bd43JhRN4rj27BOdjp2Afx7UiGa2CEo", "bcdx4nwYJgY4fYgvq8n2rTpbkjSGP3KR1vSGLd6q");
+
+		window.fbAsyncInit = function() {
     Parse.FacebookUtils.init({
       appId      : '1710342535865830',
       status     : true,
       cookie	 : true,
       xfbml      : true,
-      version    : 'v2.5'
+      version    : 'v2.4'
     });
 
-    Parse.FacebookUtils.logIn(null, {
-  success: function(user) {
-    if (!user.existed()) {
-      alert("User signed up and logged in through Facebook!");
-    } else {
-      alert("User logged in through Facebook!");
-    }
-  },
-  error: function(user, error) {
-    alert("User cancelled the Facebook login or did not fully authorize.");
-  }
-});
   };
-
   (function(d, s, id){
      var js, fjs = d.getElementsByTagName(s)[0];
      if (d.getElementById(id)) {return;}
@@ -43,6 +32,19 @@
      js.src = "https://connect.facebook.net/en_US/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
+
+		Parse.FacebookUtils.logIn("user_likes, email", {
+			success: function(user) {
+				if (!user.existed()) {
+					alert("User signed up and logged in through Facebook!");
+				} else {
+					alert("User logged in through Facebook!");
+				}
+			},
+			error: function(user, error) {
+				alert("User cancelled the Facebook login or did not fully authorize.");
+			}
+		});
 </script>
   	<br>
 	<div class="container" style="transform:translateY(100%)">
@@ -59,11 +61,11 @@
 					</div>
 				</form>
 				<span><p style="color:red" id="msg">Incorrect username password combination</p></span>
-				<div class="container">
-					<div class="row col-sm-12 col-md-6 col-lg-7" >
-						<button type = "button" id="submit" class = "btn btn-success " style="width:50%;">Login</button>
-						<br>
-						<!--</div>-->
+				<div class="container col-sm-12">
+					<div class="row" >
+						<button type = "button" id="submit" class = "btn btn-success " style="width:50%;margin-bottom:20px">Login</button>
+						<div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="true"></div>
+					</div>
 						<div id="register" class="row">
 							<a href="form.html" style="text-align:center;">Register</a>
 						</div>
