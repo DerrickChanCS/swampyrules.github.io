@@ -1,3 +1,9 @@
+body {
+	background-image: url(mainbg2.jpg);
+	background-size: cover;
+}
+
+
 img.resize{
     height:100px; /* you can use % */
     width: auto;
@@ -20,8 +26,6 @@ img.resize{
 	transform: translateY(0px);
 }
 
-
-
 div.carousel{
 	display:block;
 	overflow:hidden;
@@ -29,4 +33,12 @@ div.carousel{
 	height:250px;
 	margin-right:auto;
 	margin-left:auto;
+}
+
+.hoverOpacity:hover{
+	opacity: 1.0;
+}
+
+.hoverOpacity{
+	opacity: 0.2;
 }
