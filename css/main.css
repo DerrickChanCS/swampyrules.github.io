@@ -1,3 +1,9 @@
+body {
+	background-image: url(mainbg2.jpg);
+	background-size: cover;
+}
+
+
 img.resize{
     height:100px; /* you can use % */
     width: auto;

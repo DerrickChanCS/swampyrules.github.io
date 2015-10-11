@@ -13,10 +13,10 @@ $(document).ready(function() {
 	user.set("firstName", first);
 	user.set("lastName", last);
 
-	if (gender = "male") {
+	if (gender == "male") {
 		user.set("male", true);
 		user.set("female", false);
-	} else if (gender = "female") {
+	} else if (gender == "female") {
 		user.set("female", true);
 		user.set("male", false);
 	} else {
@@ -50,6 +50,13 @@ $(document).ready(function() {
 
 	$("#male").click(function(){
 		var currentclass = $("#male").attr("class");
+		var otherClassF = $("#female").attr("class");
+		var otherClassN = $("#none").attr("class");
+
+		if (otherClassF == "btn btn-default active" || otherClassN == "btn btn-default active") {
+			$("#female").removeClass("btn btn-default active").addClass("btn btn-default");
+			$("#none").removeClass("btn btn-default active").addClass("btn btn-default");
+		}
 
 		if (currentclass == "btn btn-default") {
 			$("#male").removeClass("btn btn-default").addClass("btn btn-default active");
@@ -63,6 +70,13 @@ $(document).ready(function() {
 
 	$("#female").click(function(){
 		var currentclass = $("#female").attr("class");
+		var otherClassM = $("#male").attr("class");
+		var otherClassN = $("#none").attr("class");
+
+		if (otherClassM == "btn btn-default active" || otherClassN == "btn btn-default active") {
+			$("#male").removeClass("btn btn-default active").addClass("btn btn-default");
+			$("#none").removeClass("btn btn-default active").addClass("btn btn-default");
+		}
 
 		if (currentclass == "btn btn-default") {
 			$("#female").removeClass("btn btn-default").addClass("btn btn-default active");
@@ -76,6 +90,13 @@ $(document).ready(function() {
 
 	$("#none").click(function(){
 		var currentclass = $("#none").attr("class");
+		var otherClassM = $("#male").attr("class");
+		var otherClassF = $("#female").attr("class");
+
+		if (otherClassM == "btn btn-default active" || otherClassF == "btn btn-default active") {
+			$("#male").removeClass("btn btn-default active").addClass("btn btn-default");
+			$("#female").removeClass("btn btn-default active").addClass("btn btn-default");
+		}
 
 		if (currentclass == "btn btn-default") {
 			$("#none").removeClass("btn btn-default").addClass("btn btn-default active");

@@ -15,3 +15,14 @@ html {
 body { 
     background-color: transparent;
 }
+
+a {
+	color: inherit;
+}
+
+#register {
+	position: fixed;
+	top: 83%;
+	left: 49%;
+
+}
