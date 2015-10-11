@@ -11,6 +11,39 @@
   	<script> document.title = 'ZORI'; </script>
   </head>
   <body>
+  	<script>
+  		Parse.initialize("EAhGRHsW3bd43JhRN4rj27BOdjp2Afx7UiGa2CEo", "bcdx4nwYJgY4fYgvq8n2rTpbkjSGP3KR1vSGLd6q");
+  window.fbAsyncInit = function() {
+    Parse.FacebookUtils.init({
+      appId      : '1710342535865830',
+      status     : true,
+      cookie	 : true,
+      xfbml      : true,
+      version    : 'v2.5'
+    });
+
+    Parse.FacebookUtils.logIn(null, {
+  success: function(user) {
+    if (!user.existed()) {
+      alert("User signed up and logged in through Facebook!");
+    } else {
+      alert("User logged in through Facebook!");
+    }
+  },
+  error: function(user, error) {
+    alert("User cancelled the Facebook login or did not fully authorize.");
+  }
+});
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
   	<br>
 	<div class="container" style="transform:translateY(100%)">
 		<div class="row">
