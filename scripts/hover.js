@@ -20,10 +20,11 @@ $(document).ready(function(){
   		slidesToShow: 3,
   		//autoplay: true,
   		autoplaySpeed: 2000,
+  		draggable: false,
   		responsive: [{
       		breakpoint: 768,
       		settings: {
-        		arrows: false,
+        		arrows: true,
         		centerMode: true,
         		centerPadding: '40px',
         		slidesToShow: 3
@@ -32,7 +33,7 @@ $(document).ready(function(){
     	{
       		breakpoint: 480,
       		settings: {
-        		arrows: false,
+        		arrows: true,
         		centerMode: true,
         		centerPadding: '40px',
         		slidesToShow: 1
@@ -52,12 +53,38 @@ $(document).ready(function(){
 		$('#carouselTop').slick('slickPause');
 		$('#carouselBot').slick('slickPause');
 	});
-
+	/*
+	var isMoveBot = false;
 	$('#carouselTop').on('beforeChange',function(event,slick,currentSlide,nextSlide){
 		$('#carouselBot').slick('slickNext');
 	});
 	
-
+	$('#carouselBot').on('beforeChange',function(event,slick,currentSlide,nextSlide){
+		$('#carouselTop').slick('slickNext');
+	});
+	*/
+	$(function(){
+		$('#carouselTop').keydown(function(e){
+			if(e.which == 39){
+				$('#carouselTop').slick('slickNext');
+				$('#carouselBot').slick('slickNext');
+			}
+			else if(e.which == 37){
+				$('#carouselTop').slick('slickPrev');
+				$('#carouselBot').slick('slickPrev');
+			}
+		});
+		$('#carouselBot').keydown(function(e){
+			if(e.which == 39){
+				$('#carouselTop').slick('slickNext');
+				$('#carouselBot').slick('slickNext');
+			}
+			else if(e.which == 37){
+				$('#carouselTop').slick('slickPrev');
+				$('#carouselBot').slick('slickPrev');
+			}
+		});
+	});
 });
 
 	
