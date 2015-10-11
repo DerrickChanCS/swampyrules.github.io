@@ -1,5 +1,6 @@
 
 $(document).ready(function(){
+	Parse.initialize("EAhGRHsW3bd43JhRN4rj27BOdjp2Afx7UiGa2CEo", "bcdx4nwYJgY4fYgvq8n2rTpbkjSGP3KR1vSGLd6q")
 	console.log("hi");
 	var geocoder;
 	geocoder = new google.maps.Geocoder(); 
@@ -68,37 +69,37 @@ $(document).ready(function(){
 				}
 
 				else if(temp >= 55 && temp < 65){
-					temp_cond = "cold";
+					temp_cond = "Cold";
 				}
 				else if(temp >= 65 && temp < 70){
-					temp_cond = "brisk"; 
+					temp_cond = "Normal"; 
 				}
 				else if(temp >= 70 && temp < 85){
-					temp_cond = "warm"; 
+					temp_cond = "Warm"; 
 				}
 				else{
-					temp_cond = "hot"; 
+					temp_cond = "Hot"; 
 				}
 
 				console.log(temp_cond);
 
 				var weather_cond; 
 				if(code === 0 || code === 24){
-					weather_cond = "windy"; 
+					weather_cond = "Windy"; 
 				} 
 				else if( code === 1 || code === 2 || code === 3 || code === 4 || code === 8 || code === 9 || code === 10 ||
 					     code === 11 || code === 12 || code === 35 || code === 37 || code === 38 || code === 39 ||
 					     code === 40 || code === 45 || code === 47) {
-					weather_cond = "rainy"; 
+					weather_cond = "Rainy"; 
 				}
 
 				else if ( code === 5 || code === 6 || code === 7 || code === 13 || code === 14 || code === 15 || code === 16 ||
 					      code === 17 || code === 18 || code === 23 || code === 41 || code === 42 || code === 43 ||
 					      code === 46){
-					weather_cond = "snowy"; 
+					weather_cond = "Snowy"; 
 				}
 				else{
-					weather_cond = "normal"; 
+					weather_cond = "Normal"; 
 				}
 
 				console.log(weather_cond); 
@@ -167,8 +168,53 @@ $(document).ready(function(){
 	}
 
 	function getOutfit(weather_cond, temp_cond, season){
-		console.log("TBD"); 
+		// console.log("TBD");
+		var colors = []; 
+		if(season === "fall"){
+			colors.push("Red"); 
+			colors.push("Orange");
+			colors.push("Green"); 
+			colors.push("Brown"); 
+			colors.push("Grey"); 
+			colors.push("Black"); 
+			colors.push("White"); 
+		}
+		else if(season === "winter"){
+			colors.push("Red"); 
+			colors.push("Blue"); 
+			colors.push("Purple"); 
+			colors.push("Green"); 
+			colors.push("Yellow"); 
+			colors.push("Black"); 
+			colors.push("White"); 
+		}
+		else if(season === "spring"){
+			colors.push("Red"); 
+			colors.push("Pink"); 
+			colors.push("Green"); 
+			colors.push("Purple"); 
+			colors.push("Yellow"); 
+			colors.push("Black"); 
+			colors.push("White"); 
+		}
+		else if(season === "summer"){
+			colors.push("Blue"); 
+			colors.push("Purple"); 
+			colors.push("Pink"); 
+			colors.push("Green"); 
+			colors.push("Yellow"); 
+			colors.push("Black"); 
+			colors.push("White"); 
+		}
+
+		console.log(colors); 
+
+
 	}
+
+
+
+	
 
 
 });
