@@ -1,3 +1,32 @@
-.hover{
+img.resize{
+    height:100px; /* you can use % */
+    width: auto;
+    margin:auto;
+    margin-top:auto;
+    margin-bottom:auto;
+    transform: translateY(66px);
+}
+.slick-active img{
+	height:100px;
+	width:auto;
+	margin:auto;
+	vertical-align: middle
+}
+.slick-current img{
+	height:200px;
+	width:auto;
+	margin:auto;
+	vertical-align:middle;
+	transform: translateY(0px);
+}
 
+
+
+div.carousel{
+	display:block;
+	overflow:hidden;
+	width:1000px;
+	height:250px;
+	margin-right:auto;
+	margin-left:auto;
 }
