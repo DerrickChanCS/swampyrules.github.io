@@ -16,6 +16,7 @@ $(document).ready(function(){
 
 	$('.carousel').slick({
   		centerMode: true,
+  		infinite: false,
   		centerPadding: '60px',
   		slidesToShow: 3,
   		//autoplay: true,
@@ -41,6 +42,9 @@ $(document).ready(function(){
     	}
   		]
 	});
+
+	$('#carouselBot').slick('slickGoTo', 3, false);
+	$('#carouselTop').slick('slickGoTo', 3, false);
 	$('.outfit1').click(function(){
 		$('#carouselTop').slick('slickPause');
 		$('#carouselBot').slick('slickPause');	
