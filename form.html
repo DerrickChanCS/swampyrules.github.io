@@ -1,0 +1,56 @@
+<html>
+	<head>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  		<script src="bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+  		<script type="text/javascript" src="http://www.parsecdn.com/js/parse-latest.js"></script>
+  		<script src="scripts/formscript.js"></script>
+  		<link rel="stylesheet" href="bootstrap-3.3.5-dist/css/bootstrap.min.css">
+  		<link rel="stylesheet" href="css/formstyle.css">
+  	</head>
+  	
+  	<body>
+  		<div id="container" class="well">
+	  		<form role="form">
+	  			<div class="form-group">
+	  				<lable for="first">First Name:</lable>
+	  				<input type="text" class="form-control" id="first" class="col-sm-4">
+	  			</div>
+	  			<div class="form-group">
+	  				<lable for="last">Last Name:</lable>
+	  				<input type="text" class="form-control" id="last" class="col-sm-4">
+	  			</div>
+	  			<div class="form-group">
+	  				<lable for="username">Username:</lable>
+	  				<input type="text" class="form-control" id="username" class="col-sm-4">
+	  			</div>
+	  			<div class="form-group">
+	  				<lable for="password">Password:</lable>
+	  				<input type="password" class="form-control" id="password" class="col-sm-4">
+	  			</div>
+	  			<div class="form-group">
+	  				<lable for="repassword">Re-enter your password:</lable>
+	  				<input type="password" class="form-control" id="repassword" class="col-sm-4">
+	  			</div>
+	  			<div class="form-group">
+	  				<lable for="gender">Gender:</lable>
+	  				<br><button type="button" id="male" class="btn btn-default">Male</button>
+	  				<button type="button" id="female" class="btn btn-default">Female</button>
+	  				<button type="button" id="none" class="btn btn-default">No Preference</button>
+	  			</div>
+	  			<div class="form-group">
+	  				<lable for="email">Email:</lable>
+	  				<input type="email" class="form-control" id="email" class="col-sm-4">
+	  			</div>
+	  			<span>
+	  				<p id="error" class="col-sm-4"><b>Your passwords do not match!</b></p>
+	  			</span>
+	  			<span>
+	  				<p id="error2" class="col-sm-4"><b>All fields must be completed!</b></p>
+	  			</span>
+	  			<div>
+	  				<button type="button" id="create" class="btn btn-block">Create Account</button>
+	  			</div>
+	  		</form>
+  		</div>
+  	</body>
+</html>

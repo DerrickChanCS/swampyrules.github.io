@@ -1,0 +1,17 @@
+.vertAlign{
+	vertical-align: middle;
+}
+
+.horiAlign{
+	margin: auto;
+	float:none;
+}
+
+html {
+    background: url(model2.jpg) no-repeat center center fixed; 
+    background-size: cover;
+}
+
+body { 
+    background-color: transparent;
+}
