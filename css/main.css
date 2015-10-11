@@ -19,7 +19,7 @@ img.resize{
 	vertical-align: middle
 }
 .slick-current img{
-	height:200px;
+	height:300px;
 	width:auto;
 	margin:auto;
 	vertical-align:middle;
@@ -40,5 +40,5 @@ div.carousel{
 }
 
 .hoverOpacity{
-	opacity: 0.2;
+	opacity: 0.4;
 }
