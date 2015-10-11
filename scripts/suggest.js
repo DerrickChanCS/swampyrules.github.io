@@ -171,6 +171,9 @@ $(document).ready(function(){
 
 	function getOutfit(weather_cond, temp_cond, season){
 		// console.log("TBD");
+		weather_cond = "Normal";
+		temp_cond = "Chilly"
+		season = "fall";
 		var colors = []; 
 		if(season === "fall"){
 			colors.push("Red"); 
@@ -231,7 +234,8 @@ $(document).ready(function(){
 				}
 				else{
 					gender_pref = "nopref"; 
-				} 
+				}
+				gender_pref = "male";
 				allquery(gender_pref, colors, season); 
 			},
 			error: function(error){
@@ -424,11 +428,11 @@ $(document).ready(function(){
 						bot.src= botImage.url();
 
 						//
-						//This is used to store outfits sets the Outfit pointer to a user, then sets outfit pointers to tops and bottoms
-						var Outfits = new Parse.Object.extend("Outfits");
-						Outfits.set("username", Parse.User.current());
-						Outfits.set("top", clone);
-						Outfits.set("bottom", botclone);
+						////This is used to store outfits sets the Outfit pointer to a user, then sets outfit pointers to tops and bottoms
+						//var Outfits = new Parse.Object.extend("Outfits");
+						//Outfits.set("username", Parse.User.current());
+						//Outfits.set("top", clone);
+						//Outfits.set("bottom", botclone);
 					}
 
 					console.log(finished_outfits_bot); 
